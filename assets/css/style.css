@@ -175,13 +175,23 @@ body.nav-closed #page    { margin-left: 0; }
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
+  position: relative;
+  height: 2rem;
 }
 
-.marquee-bar marquee {
+.marquee-bar span {
+  position: absolute;
   font-size: 0.85rem;
   font-weight: 600;
   color: #eafff9;
   letter-spacing: 1px;
+  line-height: 2rem;
+  animation: scroll-left 12s linear infinite;
+}
+
+@keyframes scroll-left {
+  0%   { left: 100%; }
+  100% { left: -20%; }
 }
 
 /* ════════ MAIN ════════ */
