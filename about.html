@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Murphy - About Me</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <button id="sidebar-toggle" onclick="document.body.classList.toggle('nav-closed')" aria-label="Toggle menu">&#9776;</button>
+  <div id="sidebar">
+    <img class="side-logo" src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" />
+    <div class="side-title">Andrew Murphy Digital Portfolio</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Me</a>
+      <a href="course.html">Course</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </div>
+
+  <div id="page">
+
+    <div class="banner">
+      <div class="banner-logo-box">
+        <img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="fallback">Andrew Murphy<br/>Digital Portfolio</span>
+      </div>
+    </div>
+
+    <div class="page-title-bar">About Me</div>
+
+    <div class="marquee-bar">
+      <span>
+        Welcome to my Digital Portfolio &nbsp;|&nbsp; Andrew Murphy &nbsp;|&nbsp;
+        ICT Student at NRC Coleraine &nbsp;|&nbsp; Passionate about Technology &nbsp;|&nbsp;
+        Welcome to my Digital Portfolio &nbsp;|&nbsp; Andrew Murphy &nbsp;|&nbsp;
+        ICT Student at NRC Coleraine &nbsp;|&nbsp; Passionate about Technology &nbsp;|&nbsp;
+      </span>
+    </div>
+
+    <main>
+
+      <div class="panel">
+        <div class="about-grid">
+
+          <div>
+            <div class="photo-circle"><img src="assets/images/me.jpg" alt="Andrew Murphy" /></div>
+            <div class="about-caption">Pictures</div>
+          </div>
+
+          <div class="about-info">
+            <p>My name is <span class="hl">Andrew Murphy</span></p>
+            <p>I currently attend <span class="hl">NRC in Coleraine</span>.</p>
+            <p>At school my favourite subject was <span class="hl">ICT</span></p>
+            <p>Outside of school I enjoy <span class="hl">gaming and exploring new technology</span></p>
+            <p>In the future I hope to work/study in <span class="hl">the IT industry</span></p>
+            <p>You can reach me at <span class="hl">60057928@nrc.ac.uk</span></p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="video-section">
+        <div class="vlabel">Videos</div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/J6CtGEDPAzQ"
+            title="Portfolio Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      Andrew Murphy | <a href="mailto:60057928@nrc.ac.uk">60057928@nrc.ac.uk</a> | Union St, Coleraine BT52 1QA
+    </footer>
+
+  </div>
+</body>
+</html>

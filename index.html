@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Murphy - Digital Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <button id="sidebar-toggle" onclick="document.body.classList.toggle('nav-closed')" aria-label="Toggle menu">&#9776;</button>
+  <div id="sidebar">
+    <img class="side-logo" src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" />
+    <div class="side-title">Andrew Murphy Digital Portfolio</div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="course.html">Course</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </div>
+
+  <div id="page">
+
+    <div class="banner">
+      <div class="banner-logo-box">
+        <img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="fallback">Andrew Murphy<br/>Digital Portfolio</span>
+      </div>
+    </div>
+
+    <div class="page-title-bar">Welcome to my Digital Portfolio</div>
+
+    <div class="marquee-bar">
+      <span>
+        Welcome to my Digital Portfolio &nbsp;|&nbsp; Andrew Murphy &nbsp;|&nbsp; ICT Student at NRC Coleraine &nbsp;|&nbsp; Passionate about Technology &nbsp;|&nbsp;
+        Welcome to my Digital Portfolio &nbsp;|&nbsp; Andrew Murphy &nbsp;|&nbsp; ICT Student at NRC Coleraine &nbsp;|&nbsp; Passionate about Technology &nbsp;|&nbsp;
+      </span>
+    </div>
+
+    <main>
+
+      <div class="panel">
+        <div class="home-split">
+          <div>
+            <h2>Welcome to my Portfolio</h2>
+            <p>Hello there traveller, you have landed on my Home page! My name is Andrew Murphy
+               and I have created this portfolio to showcase the work I have completed this year
+               in the L2 IT course.</p>
+            <p>I had started this course in September 2025 and will be done midway through
+               June 2026. I feel like I have learnt many things about IT throughout this year
+               and have also had a fun time.</p>
+          </div>
+          <div class="home-aside">
+            <img src="assets/images/monkey-buisness.gif" alt="Andrew Murphy" />
+          </div>
+        </div>
+      </div>
+
+      <div class="subbar">Location</div>
+      <div class="map-logo-row">
+        <div class="cell">
+          <div class="cell-label">NRC Map - Union St, Coleraine BT52 1QA</div>
+          <iframe
+            src="https://maps.google.com/maps?q=Northern+Regional+College,+Union+St,+Coleraine+BT52+1QA&output=embed"
+            title="NRC Location" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+        <div class="cell">
+          <img src="assets/images/NRClogo.jpeg" alt="Northern Regional College" />
+        </div>
+      </div>
+      <div class="home-date">Monday June 1, 2026</div>
+
+    </main>
+
+    <footer>
+      Andrew Murphy | <a href="mailto:60057928@nrc.ac.uk">60057928@nrc.ac.uk</a> | Union St, Coleraine BT52 1QA
+    </footer>
+
+  </div>
+</body>
+</html>

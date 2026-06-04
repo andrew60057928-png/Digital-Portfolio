@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Murphy - Business Cards</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0d141a;
+      padding: 40px 24px;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1abc9c;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #7a8a86;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      color: #1abc9c;
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    /* ── SHEET: 2 cols × 5 rows of cards ── */
+    .sheet {
+      display: grid;
+      grid-template-columns: repeat(2, 340px);
+      gap: 14px;
+      justify-content: center;
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      width: 340px;
+      height: 190px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════
+       FRONT CARD
+    ══════════════════════════════════ */
+    .card-front {
+      background: #16232e;
+      border: 2px solid #1abc9c;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* teal header strip */
+    .front-header {
+      background: #1abc9c;
+      padding: 10px 14px 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .front-header .logo-box {
+      background: #fff;
+      border-radius: 4px;
+      padding: 3px 5px;
+      height: 50px;
+      width: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .front-header .logo-box img {
+      max-height: 44px;
+      max-width: 74px;
+      object-fit: contain;
+    }
+
+    .front-header .nameblock .name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #07241d;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .front-header .nameblock .role {
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: #0a3d30;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* body: info + qr */
+    .front-body {
+      display: flex;
+      flex: 1;
+    }
+
+    .front-info {
+      flex: 1;
+      padding: 11px 14px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .irow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: #cfe9e2;
+      line-height: 1.3;
+    }
+
+    .irow .dot {
+      width: 6px;
+      height: 6px;
+      background: #1abc9c;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .front-qr-panel {
+      width: 82px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      gap: 4px;
+      border-left: 2px solid #1abc9c;
+    }
+
+    .front-qr-panel img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+    }
+
+    .front-qr-panel .qlabel {
+      font-size: 0.48rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #128f77;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* footer strip */
+    .front-footer {
+      background: #128f77;
+      padding: 5px 14px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #d4f3ec;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════
+       BACK CARD
+    ══════════════════════════════════ */
+    .card-back {
+      background: #1abc9c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 20px;
+    }
+
+    .back-logo-box {
+      background: #fff;
+      border-radius: 6px;
+      padding: 5px 12px;
+      border: 2px solid #07241d;
+    }
+
+    .back-logo-box img {
+      display: block;
+      max-height: 64px;
+      max-width: 170px;
+      object-fit: contain;
+    }
+
+    .back-name {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #07241d;
+      text-align: center;
+    }
+
+    .back-detail {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #0a3d30;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    /* ── print controls ── */
+    .controls {
+      text-align: center;
+      margin-top: 36px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .controls p {
+      width: 100%;
+      color: #7a8a86;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .btn {
+      background: #1abc9c;
+      color: #07241d;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 22px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn:hover { background: #128f77; color: #fff; }
+
+    /* ── print mode ── */
+    @media print {
+      body { background: #fff; padding: 6mm; }
+      .controls, h1, .subtitle, .section-label { display: none; }
+      .card { box-shadow: none; }
+      .card-front { border: 1px solid #aaa !important; }
+      .sheet { gap: 6mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Andrew Murphy &mdash; Business Cards</h1>
+  <p class="subtitle">Print on business card stock &bull; 85 &times; 55 mm per card</p>
+
+  <!-- ══ FRONT SHEET ══ -->
+  <p class="section-label">Front &mdash; 10 cards per sheet</p>
+  <div class="sheet" id="front-sheet">
+
+    <!-- card repeated 10 times -->
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+    <div class="card card-front">
+      <div class="front-header">
+        <div class="logo-box">
+          <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="nameblock">
+          <div class="name">Andrew Murphy</div>
+          <div class="role">ICT Student &nbsp;|&nbsp; NRC Coleraine</div>
+        </div>
+      </div>
+      <div class="front-body">
+        <div class="front-info">
+          <div class="irow"><span class="dot"></span> 60057928@nrc.ac.uk</div>
+          <div class="irow"><span class="dot"></span> Union St, Coleraine BT52 1QA</div>
+          <div class="irow"><span class="dot"></span> L2 Traineeship in IT</div>
+          <div class="irow"><span class="dot"></span> Web Dev &bull; IT Systems &bull; IT Apps</div>
+          <div class="irow"><span class="dot"></span> Scan QR for portfolio</div>
+        </div>
+        <div class="front-qr-panel">
+          <img src="assets/images/qrcode.jpg" alt="QR Code" />
+          <div class="qlabel">Scan to visit<br/>my portfolio</div>
+        </div>
+      </div>
+      <div class="front-footer">Andrew Murphy Digital Portfolio</div>
+    </div>
+
+  </div><!-- /front-sheet -->
+
+  <!-- ══ BACK SHEET ══ -->
+  <p class="section-label">Back &mdash; 10 cards per sheet</p>
+  <div class="sheet">
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+    <div class="card card-back">
+      <div class="back-logo-box"><img src="assets/images/logo.png" alt="Andrew Murphy Digital Portfolio" onerror="this.parentElement.innerHTML='<span style=&quot;font-size:0.9rem;font-weight:800;letter-spacing:2px;color:#07241d;&quot;>ANDREW MURPHY</span>'" /></div>
+      <div class="back-name">Andrew Murphy</div>
+      <div class="back-detail">ICT Student &nbsp;&bull;&nbsp; NRC Coleraine &nbsp;&bull;&nbsp; 2025&ndash;2026</div>
+    </div>
+
+  </div><!-- /back-sheet -->
+
+  <div class="controls">
+    <p>Print front sheet, flip paper, print back sheet &mdash; cards align for double-sided printing</p>
+    <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+</body>
+</html>
